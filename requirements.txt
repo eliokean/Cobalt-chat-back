@@ -4,6 +4,7 @@ websockets==17.2
 pydantic==2.13.5
 pydantic-settings==2.15.0
 SQLAlchemy==2.1.6
+psycopg[binary]==3.3.7
 PyJWT==2.15.1
 python-multipart==0.0.32
 
