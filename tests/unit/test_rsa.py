@@ -98,7 +98,7 @@ def test_encrypt_int_out_of_range(keys):
 @pytest.mark.parametrize("text", [
     "Salut le monde !",
     "",
-    "Accents : éèàçù — emoji 🔐",
+    "Accents : éèàçù — emoji \U0001F510",
     "x" * 5000,  # plusieurs blocs
 ])
 def test_encrypt_decrypt_text(keys, text):

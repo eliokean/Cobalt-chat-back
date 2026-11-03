@@ -15,7 +15,8 @@ from .exceptions import (
 
 MAX_MESSAGE_LENGTH = 4000
 MAX_GROUP_TITLE_LENGTH = 64
-ALLOWED_REACTIONS = ("🔥", "❤️", "👏", "🚀", "✨", "👍", "😂")
+# Identifiants des réactions (icônes rendues côté front par lucide-react)
+ALLOWED_REACTIONS = ("like", "love", "laugh", "fire", "celebrate", "sad")
 
 
 @dataclass

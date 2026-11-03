@@ -125,7 +125,7 @@ def test_pin_and_archive(client, alice, bob):
 
 def test_messages_are_stored_encrypted(client, alice, bob):
     chat = create_dm(client, alice, bob)
-    secret = "Le code du coffre est 4242 🔐"
+    secret = "Le code du coffre est 4242 \U0001F510"
     r = client.post(f"/api/v1/chats/{chat['id']}/messages", json={"content": secret}, headers=alice["headers"])
     assert r.status_code == 201
     msg = r.json()
@@ -186,14 +186,14 @@ def test_reactions_toggle(client, alice, bob):
                       headers=alice["headers"]).json()
     url = f"/api/v1/chats/{chat['id']}/messages/{msg['id']}/reactions"
 
-    r = client.post(url, json={"emoji": "🔥"}, headers=bob["headers"]).json()
-    assert r["reactions"] == [{"emoji": "🔥", "count": 1, "user_ids": [bob["id"]]}]
-    r = client.post(url, json={"emoji": "🔥"}, headers=alice["headers"]).json()
+    r = client.post(url, json={"emoji": "fire"}, headers=bob["headers"]).json()
+    assert r["reactions"] == [{"emoji": "fire", "count": 1, "user_ids": [bob["id"]]}]
+    r = client.post(url, json={"emoji": "fire"}, headers=alice["headers"]).json()
     assert r["reactions"][0]["count"] == 2
-    r = client.post(url, json={"emoji": "🔥"}, headers=bob["headers"]).json()
+    r = client.post(url, json={"emoji": "fire"}, headers=bob["headers"]).json()
     assert r["reactions"][0]["user_ids"] == [alice["id"]]
 
-    assert client.post(url, json={"emoji": "💩"}, headers=bob["headers"]).status_code == 400
+    assert client.post(url, json={"emoji": "poop"}, headers=bob["headers"]).status_code == 400
 
 
 def test_list_sorted_pinned_first(client, alice, bob, carol):
