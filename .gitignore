@@ -1,0 +1,19 @@
+# Environnement Python
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Base SQLite locale (contient comptes, messages et clés RSA)
+*.db
+*.db-shm
+*.db-wal
+
+# Secrets
+.env
+.env.*
+
+# IDE
+.vscode/
+.idea/
