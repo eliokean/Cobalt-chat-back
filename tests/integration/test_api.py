@@ -244,3 +244,10 @@ def test_websocket_rejects_bad_token(client):
     with pytest.raises(WebSocketDisconnect):
         with client.websocket_connect("/api/v1/ws?token=invalid") as ws:
             ws.receive_json()
+
+
+def test_health_accepts_head(client):
+    # Les moniteurs (UptimeRobot...) utilisent HEAD
+    for path in ("/", "/health"):
+        assert client.head(path).status_code == 200
+        assert client.get(path).status_code == 200

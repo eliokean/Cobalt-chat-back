@@ -49,7 +49,7 @@ def create_application() -> FastAPI:
     app.include_router(ws_router, prefix="/api/v1")
 
     # 3. Routes racine & healthcheck
-    @app.get("/", tags=["Health"])
+    @app.api_route("/", methods=["GET", "HEAD"], tags=["Health"])
     def read_root():
         return {
             "status": "online",
@@ -57,7 +57,7 @@ def create_application() -> FastAPI:
             "version": settings.VERSION,
         }
 
-    @app.get("/health", tags=["Health"])
+    @app.api_route("/health", methods=["GET", "HEAD"], tags=["Health"])
     def health_check():
         return {"status": "ok"}
 
